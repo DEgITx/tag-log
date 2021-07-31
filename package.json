@@ -1,0 +1,22 @@
+{
+  "name": "tag-log",
+  "version": "1.0.0",
+  "description": "Beatuful uniquie color log for each component with log file support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "log",
+    "tag",
+    "logs",
+    "color",
+    "debug",
+    "ansi"
+  ],
+  "author": "Alexey Kasyanchuk <degitx@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ansi-256-colors": "^1.1.0"
+  }
+}
