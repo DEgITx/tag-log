@@ -1,7 +1,11 @@
 {
-  "name": "tag-log",
+  "name": "tagslog",
   "version": "1.0.0",
   "description": "Beatuful uniquie color log for each component with log file support",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DEgITx/tagslog.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +16,8 @@
     "logs",
     "color",
     "debug",
-    "ansi"
+    "ansi",
+    "tags-log"
   ],
   "author": "Alexey Kasyanchuk <degitx@gmail.com>",
   "license": "MIT",

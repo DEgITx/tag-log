@@ -7,14 +7,14 @@ Small color log with support of tags for different components of the program. Al
 ## Installation
 
 ```bash
-npm install tag-log --save
+npm install tagslog --save
 ```
 
 ## Usage / Example
 
 ```javascript
 // will include global loggin in your application in all js files
-require('tag-log');
+require('tagslog');
 
 
 // verbose/default message
