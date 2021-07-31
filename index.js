@@ -30,14 +30,14 @@ global.logT = (type, ...d) => {
 
 global.logTW = (type, ...d) => {
 	const date = (new Date).toLocaleTimeString()
-	console.warn(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[11] + util.format(...d) + colors.reset + '\n');
+	console.warn(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[11] + util.format(...d) + colors.reset);
 	if (logFile)
 		logFile.write(`[${date}] [WARN] ` + util.format(...d) + '\n');
 }
 
 global.logTE = (type, ...d) => {
 	const date = (new Date).toLocaleTimeString()
-	console.error(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[9] + util.format(...d) + colors.reset + '\n');
+	console.error(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[9] + util.format(...d) + colors.reset);
 	if (logFile)
 		logFile.write(`[${date}] [ERROR] ` + util.format(...d) + '\n');
 }
