@@ -40,9 +40,11 @@ require('tagslog')({
     logFile: 'project.log'
 });
 ```
-Options:
-| Option | Description | Default |
-|--------|-------------|---------|
-| logFile | Output log in log file, beside output to console. By default enabled and output to projectName.log from package.json. Can be disabled by logFile: false | projectName.log |
+Possible options:
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| logFile | string / boolean | Output log in log file, beside output to console. By default enabled and output to projectName.log from package.json. Can be disabled by logFile: false | projectName.log |
+| overrideConsole | boolean | Redefine console.log to write log into logFile | false |
+| stdout | function | Use custom output log function, like console.log() | not defined |
 ## License
 MIT
