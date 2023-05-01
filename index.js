@@ -25,33 +25,45 @@ module.exports = (options = {}) => {
 	}
 
 	global.logT = (type, ...d) => {
-		const date = (new Date).toLocaleTimeString();
-		(options.stdout || console.log)(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + util.format(...d));
+		const now = new Date;
+		const time = now.toLocaleTimeString();
+		const date = now.toLocaleDateString();
+		const ms = now.getMilliseconds();
+		(options.stdout || console.log)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + util.format(...d));
 		if (logFile)
-			logFile.write(`[${date}] ` + util.format(...d) + '\n');
+			logFile.write(`[${date} ${time}.${ms}] [${type}] ` + util.format(...d) + '\n');
 	}
 
 	global.logTW = (type, ...d) => {
-		const date = (new Date).toLocaleTimeString();
-		(options.stdout || console.warn)(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[11] + util.format(...d) + colors.reset);
+		const now = new Date;
+		const time = now.toLocaleTimeString();
+		const date = now.toLocaleDateString();
+		const ms = now.getMilliseconds();
+		(options.stdout || console.warn)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[11] + util.format(...d) + colors.reset);
 		if (logFile)
-			logFile.write(`[${date}] [WARN] ` + util.format(...d) + '\n');
+			logFile.write(`[${date} ${time}.${ms}] [WARN] [${type}] ` + util.format(...d) + '\n');
 	}
 
 	global.logTE = (type, ...d) => {
-		const date = (new Date).toLocaleTimeString();
-		(options.stdout || console.error)(colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[9] + util.format(...d) + colors.reset);
+		const now = new Date;
+		const time = now.toLocaleTimeString();
+		const date = now.toLocaleDateString();
+		const ms = now.getMilliseconds();
+		(options.stdout || console.error)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[9] + util.format(...d) + colors.reset);
 		if (logFile)
-			logFile.write(`[${date}] [ERROR] ` + util.format(...d) + '\n');
+			logFile.write(`[${date} ${time}.${ms}] [ERROR] [${type}] ` + util.format(...d) + '\n');
 	}
 
 	if(options.overrideConsole) {
 		const logPrint = console.log.bind(console);
 		console.log = (...d) => {
-			const date = (new Date).toLocaleTimeString();
+			const now = new Date;
+			const time = now.toLocaleTimeString();
+			const date = now.toLocaleDateString();
+			const ms = now.getMilliseconds();
 			(options.stdout || logPrint)(util.format(...d));
 			if (logFile)
-				logFile.write(`[${date}] ` + util.format(...d) + '\n');
+				logFile.write(`[${date} ${time}.${ms}] ` + util.format(...d) + '\n');
 		};
 	}
 }
