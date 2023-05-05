@@ -10,6 +10,13 @@ Small color log with support of tags for different components of the program. Al
 npm install tagslog --save
 ```
 
+## Features
+* Easy to include in your project, only one requre() call allow to use it over all files
+* Automatic color choise: each tag has own unique color. So different modules and components will be easy separated from each other
+* File logging at the same time as normal stream output
+* File logs contains ms time beside normal date+time.
+* You can override own stdout function 
+
 ## Usage / Example
 
 ```javascript
