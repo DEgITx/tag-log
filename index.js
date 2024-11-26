@@ -23,13 +23,14 @@ module.exports = (options = {}) => {
 		const projectName = packageJson.name;
 		logFile = fs.createWriteStream(`${projectName}.log`, {flags : 'w'});
 	}
+	const isColors = typeof options.colors === 'undefined' || options.colors;
 
 	global.logT = (type, ...d) => {
 		const now = new Date;
 		const time = now.toLocaleTimeString();
 		const date = now.toLocaleDateString();
 		const ms = (now.getMilliseconds()).toString().padStart(3, '0');
-		(options.stdout || console.log)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + util.format(...d));
+		(options.stdout || console.log)(`[${date} ${time}] ` + (isColors ? colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset : `[${type}]`) + ' ' + util.format(...d));
 		if (logFile)
 			logFile.write(`[${date} ${time}.${ms}] [${type}] ` + util.format(...d) + '\n');
 	}
@@ -39,7 +40,7 @@ module.exports = (options = {}) => {
 		const time = now.toLocaleTimeString();
 		const date = now.toLocaleDateString();
 		const ms = (now.getMilliseconds()).toString().padStart(3, '0');
-		(options.stdout || console.warn)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[11] + util.format(...d) + colors.reset);
+		(options.stdout || console.warn)(`[${date} ${time}] ` + (isColors ? colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset : `[${type}]`) + ' ' + (isColors ? colors.fg.codes[11] : '') + util.format(...d) + (isColors ? colors.reset : ''));
 		if (logFile)
 			logFile.write(`[${date} ${time}.${ms}] [WARN] [${type}] ` + util.format(...d) + '\n');
 	}
@@ -49,7 +50,7 @@ module.exports = (options = {}) => {
 		const time = now.toLocaleTimeString();
 		const date = now.toLocaleDateString();
 		const ms = (now.getMilliseconds()).toString().padStart(3, '0');
-		(options.stdout || console.error)(`[${date} ${time}] ` + colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset + ' ' + colors.fg.codes[9] + util.format(...d) + colors.reset);
+		(options.stdout || console.error)(`[${date} ${time}] ` + (isColors ? colors.fg.codes[Math.abs(stringHashCode(type)) % 256] + `[${type}]` + colors.reset : `[${type}]`) + ' ' + (isColors ? colors.fg.codes[9] : '') + util.format(...d) + (isColors ? colors.reset : ''));
 		if (logFile)
 			logFile.write(`[${date} ${time}.${ms}] [ERROR] [${type}] ` + util.format(...d) + '\n');
 	}

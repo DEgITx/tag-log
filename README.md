@@ -1,6 +1,6 @@
 # Color log with tags
 
-Small color log with support of tags for different components of the program. Also support file output with time. Support all systems.
+Small color log with support of tags for different components of the program. Also support file output with time. Support all systems and os's. Very useful for complex applications with multiple components for visual separation of logs and good readability.
 
 <p align="center"><a href="https://github.com/DEgiTx/tag-log"><img src="https://raw.githubusercontent.com/DEgITx/docs/master/tag-log/tag.png"></a></p>
 
@@ -53,5 +53,6 @@ Possible options:
 | logFile | string / boolean | Output log in log file, beside output to console. By default enabled and output to projectName.log from package.json. Can be disabled by logFile: false | projectName.log |
 | overrideConsole | boolean | Redefine console.log to write log into logFile | false |
 | stdout | function | Use custom output log function, like console.log() | not defined |
+| colors | boolean | Use colors in output | true |
 ## License
 MIT

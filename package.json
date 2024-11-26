@@ -1,6 +1,6 @@
 {
   "name": "tagslog",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "Beatuful uniquie color log for each component with log file support",
   "repository": {
     "type": "git",
